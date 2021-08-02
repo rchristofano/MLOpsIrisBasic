@@ -1,0 +1,15 @@
+name: mlops_diabetes_regression_basic
+channels:
+  - conda-forge
+dependencies:
+  - python=3.7
+  - pip
+  - pip:
+    - pytest==5.4.*
+    - pytest-cov==2.8.*
+    - requests==2.23.*
+    - python-dotenv==0.12.*
+    - flake8==3.7.*
+    - flake8_formatter_junit_xml==0.0.*
+    - azure-cli==2.3.*
+    
