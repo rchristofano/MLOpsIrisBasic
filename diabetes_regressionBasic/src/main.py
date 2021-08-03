@@ -20,7 +20,7 @@ train_args = {"alpha": 0.5}
 # resource_group = 'lab'
 # workspace_name = 'main'
 
-# ws = Workspace(subscription_id, resource_group, workspace_name)
+# ws = Workspace(subscription_id, resource_group, workspace_name)git 
 ws = Workspace.from_config()
 
 dataset = Dataset.get_by_name(ws, name='diabetes_ds')
