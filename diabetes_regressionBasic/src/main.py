@@ -46,8 +46,8 @@ os.makedirs(step_output_path, exist_ok=True)
 model_output_path = os.path.join(step_output_path, model_name)
 joblib.dump(value=model, filename=model_output_path)
 
-run.register_model(model_name=model_name,
-                   model_path='outputs', # the relative cloud path
+run.register_model(model_name="diabetes_model",
+                   model_path=model_output_path, # the relative cloud path
                    tags={'area': 'diabetes', 'type': 'regression'},
                    description='A simple Ridge Regression model'
                    )
