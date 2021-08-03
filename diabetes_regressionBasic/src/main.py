@@ -1,6 +1,7 @@
 from train import train_model, split_data, get_model_metrics
 from azureml.core.run import Run
 from azureml.core import Dataset
+from azureml.core import Model as AMLModel
 
 import joblib
 
@@ -41,19 +42,15 @@ for (k, v) in metrics.items():
     run.log(k, v)
     run.parent.log(k, v)
 
-# Pass model file to next step
+# Register model
 os.makedirs(step_output_path, exist_ok=True)
 model_output_path = os.path.join(step_output_path, model_name)
 joblib.dump(value=model, filename=model_output_path)
 
-# Also upload model file to run outputs for history
-os.makedirs('outputs', exist_ok=True)
-output_path = os.path.join('outputs', model_name)
-joblib.dump(value=model, filename=output_path)
-
-run.tag("run_type", value="train")
-print(f"tags now present for run: {run.tags}")
-
-run.upload_file(name=model_name, path_or_stream=model_output_path)
+run.register_model(model_name=model_name,
+                   model_path='outputs', # the relative cloud path
+                   tags={'area': 'diabetes', 'type': 'regression'},
+                   description='A simple Ridge Regression model'
+                   )
 
 run.complete()
