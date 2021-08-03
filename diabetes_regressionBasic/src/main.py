@@ -1,7 +1,6 @@
 from train import train_model, split_data, get_model_metrics
 from azureml.core.run import Run
 from azureml.core import Dataset
-from azureml.core import Model as AMLModel
 
 import joblib
 

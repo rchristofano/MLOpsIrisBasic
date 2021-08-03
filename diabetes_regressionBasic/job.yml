@@ -2,8 +2,7 @@ $schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
 code: 
   local_path: src
 command: >
-  # python main.py  sds
-  python diabetes_regression_build_train_pipeline.py
+  python main.py
 environment:
   docker:
     # image: mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04
