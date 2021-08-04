@@ -1,4 +1,5 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+
 code: 
   local_path: src
 command: >
@@ -6,9 +7,9 @@ command: >
 environment:
   docker:
     # image: mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04
-    # image: mcr.microsoft.com/mlops/python:latest
-    image: a2golab.azurecr.io/a2go/diabetes_regression:latest
-#  conda_file: file:environment.yml
+    image: mcr.microsoft.com/mlops/python:latest
+    # image: a2golab.azurecr.io/a2go/diabetes_regression:latest
+  conda_file: file:environment.yml
 compute:
   target: azureml:cpu-cluster
 experiment_name: diabetes_regression_test
