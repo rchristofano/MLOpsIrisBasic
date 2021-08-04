@@ -15,4 +15,5 @@ dependencies:
     - train
     - pandas
     - scikit-learn
+    - azureml
     
