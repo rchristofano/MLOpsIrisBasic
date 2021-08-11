@@ -7,7 +7,7 @@ from azureml.core.runconfig import RunConfiguration
 # from ml_service.pipelines.load_sample_data import create_sample_data_csv
 # from util.attach_compute import get_compute
 from util.env_variables import Env
-# from ml_service.util.manage_environment import get_environment
+from util.manage_environment import get_environment
 import os
 
 def main():
@@ -38,8 +38,15 @@ def main():
     )
     caller_run_id_param = PipelineParameter(name="caller_run_id", default_value="none")  # NOQA: E501
 
+    environment = get_environment(
+        ws,
+        e.aml_env_name,
+        conda_dependencies_file=e.aml_env_train_conda_dep_file,
+        create_new=e.rebuild_env,
+    )  #
+
     run_config = RunConfiguration()
-    run_config.target = ws.compute_targets["cpu-cluster"]
+    run_config.target = environment
     # Get dataset name
     dataset_name = e.dataset_name
     train_step = PythonScriptStep(
