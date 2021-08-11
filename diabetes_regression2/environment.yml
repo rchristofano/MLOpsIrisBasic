@@ -22,4 +22,5 @@ dependencies:
     - azureml-pipeline-core==1.32.0
     - azureml-pipeline-steps==1.32.0
     - python-dotenv==0.19.0
+    - joblib==1.0.1
     
