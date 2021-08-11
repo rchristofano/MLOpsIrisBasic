@@ -18,4 +18,7 @@ dependencies:
     - scikit-learn
     - azureml==0.2.7
     - azureml-core==1.32.0
+    - azureml-pipeline==1.32.0
+    - azureml-pipeline-core==1.32.0
+    - azureml-pipeline-steps==1.32.0
     
