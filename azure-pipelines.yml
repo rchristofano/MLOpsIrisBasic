@@ -15,7 +15,7 @@ stages:
       steps:
         -  task: AzureCli@1
            inputs:
-              azureSubscription: '$(WORKSPACE_SVC_CONNECTION)'
+              azureSubscription: 'ws-connection'
               scriptLocation: inlineScript
               workingDirectory: $(Build.SourcesDirectory)
               inlineScript: |
