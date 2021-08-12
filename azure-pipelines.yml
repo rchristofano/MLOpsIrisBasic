@@ -12,6 +12,7 @@ stages:
     - job: "Run_Python_Main"
       displayName: "Run_Python_Main"
       container: a2godockerimage
+      timeoutInMinutes: 0
       steps:
         -  task: AzureCli@1
            inputs:
@@ -22,4 +23,5 @@ stages:
                 set -e # fail on error
                 export SUBSCRIPTION_ID=$(az account show --query id -o tsv)
                 python -m src.main
+           displayName: 'Publish Azure Machine Learning Pipeline'
         
