@@ -25,6 +25,9 @@ stages:
               inlineScript: |
                 set -e # fail on error
                 export SUBSCRIPTION_ID=$(az account show --query id -o tsv)
+                echo "foiiii"
+                echo $PWD
+                cd /app
                 python -m src.main
            displayName: 'Publish Azure Machine Learning Pipeline'
         
