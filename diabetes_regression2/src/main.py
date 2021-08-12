@@ -46,7 +46,7 @@ def main():
     )  #
 
     run_config = RunConfiguration()
-    run_config.target = environment
+    run_config.environment = environment
     # Get dataset name
     dataset_name = e.dataset_name
     train_step = PythonScriptStep(
@@ -116,6 +116,9 @@ def main():
         published_pipeline,
         tags=tags,
         pipeline_parameters=pipeline_parameters)
+    
+    
+    print("Pipeline run initiated ", run.id)
 
 if __name__ == "__main__":
     main()
