@@ -5,6 +5,9 @@ resources:
     image: a2go/diabetes_regression
     endpoint: acrconnection
 
+pool:
+  vmImage: ubuntu-latest
+  
 stages:
 - stage: 'Create_Model'
   displayName: 'Create Model'
