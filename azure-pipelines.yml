@@ -19,5 +19,5 @@ stages:
               scriptLocation: inlineScript
               workingDirectory: $(Build.SourcesDirectory)
               inlineScript: |
-               'python -m src.main'
+                python -m src.main
         
