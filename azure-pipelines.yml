@@ -13,7 +13,11 @@ stages:
       displayName: "Run_Python_Main"
       container: a2godockerimage
       steps:
-        -  task: Bash@3
+        -  task: AzureCli@1
            inputs:
-              targetType: 'inline'
-              script: 'python -m src.main'
+              azureSubscription: '$(WORKSPACE_SVC_CONNECTION)'
+              scriptLocation: inlineScript
+              workingDirectory: $(Build.SourcesDirectory)
+              inlineScript: |
+               'python -m src.main'
+        
