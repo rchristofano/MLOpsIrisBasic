@@ -5,9 +5,7 @@ resources:
     image: a2go/diabetes_regression
     endpoint: acrconnection
 
-pool:
-  vmImage: ubuntu-latest
-  
+ 
 stages:
 - stage: 'Create_Model'
   displayName: 'Create Model'
@@ -15,7 +13,6 @@ stages:
     - job: "Run_Python_Main"
       displayName: "Run_Python_Main"
       container: a2godockerimage
-      timeoutInMinutes: 0
       steps:
         -  task: AzureCli@1
            inputs:
@@ -23,10 +20,6 @@ stages:
               scriptLocation: inlineScript
               workingDirectory: $(Build.SourcesDirectory)
               inlineScript: |
-                set -e # fail on error
-                export SUBSCRIPTION_ID=$(az account show --query id -o tsv)
-                echo "foiiii"
-                echo $PWD
                 cd /app
                 python -m src.main
            displayName: 'Publish Azure Machine Learning Pipeline'
