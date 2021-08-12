@@ -1,0 +1,19 @@
+resources:
+  containers:
+  - container: a2godockerimage
+    #image: mcr.microsoft.com/mlops/python:latest
+    image: a2go/diabetes_regression
+    endpoint: acrconnection
+
+stages:
+- stage: 'Create_Model'
+  displayName: 'Create Model'
+  jobs:
+    - job: "Run_Python_Main"
+      displayName: "Run_Python_Main"
+      container: a2godockerimage
+      steps:
+        -  task: Bash@3
+           inputs:
+              targetType: 'inline'
+              script: 'python -m src.main'
