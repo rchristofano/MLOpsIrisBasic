@@ -20,7 +20,7 @@ def get_environment(
         for env in environments:
             if env == environment_name:
                 restored_environment = environments[environment_name]
-
+        print(f"create_new: {create_new}")
         if restored_environment is None or create_new:
             new_env = Environment.from_conda_specification(
                 environment_name,
