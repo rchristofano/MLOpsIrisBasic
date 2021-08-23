@@ -99,8 +99,10 @@ def main():
         register_args = {"tags": []}
 
     model_tags = {}
+    print(f"Register Args: {register_args}")
     for tag in register_args["tags"]:
         try:
+            print(f"register_args[tags]: {register_args['tags']}")
             mtag = run.parent.get_metrics()[tag]
             model_tags[tag] = mtag
         except KeyError:
@@ -111,6 +113,7 @@ def main():
     model_file = os.path.join(model_path, model_name)
     model = joblib.load(model_file)
     parent_tags = run.parent.get_tags()
+    print(f"parent_tags: {parent_tags}")
     try:
         build_id = parent_tags["BuildId"]
     except KeyError:
