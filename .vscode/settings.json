@@ -1,0 +1,8 @@
+{
+    "azureFunctions.deploySubpath": "diabetes_regression2\\azure_function\\dataset_version",
+    "azureFunctions.scmDoBuildDuringDeployment": true,
+    "azureFunctions.pythonVenv": ".venv",
+    "azureFunctions.projectLanguage": "Python",
+    "azureFunctions.projectRuntime": "~3",
+    "debug.internalConsoleOptions": "neverOpen"
+}
