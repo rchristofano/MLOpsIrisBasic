@@ -1,0 +1,7 @@
+# Do not include azure-functions-worker as it may conflict with the Azure Functions platform
+
+azure-functions
+dotnetcore2==2.1.21
+azureml-sdk==1.32.0
+azureml==0.2.7
+azureml-core==1.32.0
