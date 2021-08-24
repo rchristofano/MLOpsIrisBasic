@@ -48,7 +48,7 @@ def main():
     #     create_new=e.rebuild_env,
     # )  
 
-    docker_config = DockerConfiguration(use_docker=True)
+ #   docker_config = DockerConfiguration(use_docker=True)
     
     environment = Environment("A2goEnv")
   #  environment.docker.base_dockerfile = "./environments/Dockerfile"
