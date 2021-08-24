@@ -2,6 +2,7 @@ import logging
 from azureml.core import Workspace, Dataset
 from azureml.core.authentication import ServicePrincipalAuthentication
 import azure.functions as func
+import src.main as runBuildAndTrain
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
@@ -65,6 +66,10 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             create_new_version=True,
         )
         logging.info("DataSet Registered")
+
+        runBuildAndTrain.main()
+
+
 
         return func.HttpResponse("Successfull", status_code=200)
 
