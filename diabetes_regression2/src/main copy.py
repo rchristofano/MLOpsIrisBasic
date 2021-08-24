@@ -2,14 +2,12 @@ from azureml.core.run import Run
 from azureml.pipeline.core.graph import PipelineParameter
 from azureml.pipeline.steps import PythonScriptStep
 from azureml.pipeline.core import Pipeline, PipelineData, PublishedPipeline
-from azureml.core import Workspace, Dataset, Datastore, Experiment, Environment
+from azureml.core import Workspace, Dataset, Datastore, Experiment
 from azureml.core.runconfig import RunConfiguration
 # from ml_service.pipelines.load_sample_data import create_sample_data_csv
 # from util.attach_compute import get_compute
 from util.env_variables import Env
-# from util.manage_environment import get_environment
-from azureml.core.runconfig import DockerConfiguration
-
+from util.manage_environment import get_environment
 import os
 
 def main():
@@ -40,26 +38,12 @@ def main():
     )
     caller_run_id_param = PipelineParameter(name="caller_run_id", default_value="none")  # NOQA: E501
 
-
-    # environment = get_environment(
-    #     ws,
-    #     e.aml_env_name,
-    #     conda_dependencies_file=e.aml_env_train_conda_dep_file,
-    #     create_new=e.rebuild_env,
-    # )  
-
-    docker_config = DockerConfiguration(use_docker=True)
-    
-    environment = Environment("A2goEnv")
-  #  environment.docker.base_dockerfile = "./environments/Dockerfile"
-   
-    environment.docker.enabled = True
-    environment.docker.base_image = "56ac70abb973483ca1233042c79cec8a.azurecr.io/a2go/diabetes_regression:latest"
-    environment.python.user_managed_dependencies = True
-    # environment.docker.base_image_registry.address = "56ac70abb973483ca1233042c79cec8a.azurecr.io"
-    # environment.docker.base_image_registry.username = "56ac70abb973483ca1233042c79cec8a"
-    # environment.docker.base_image_registry.pasword = "BO6skMX78JsECdO/WKBmvStiStN7BdRg"
-    
+    environment = get_environment(
+        ws,
+        e.aml_env_name,
+        conda_dependencies_file=e.aml_env_train_conda_dep_file,
+        create_new=e.rebuild_env,
+    )  #
 
     run_config = RunConfiguration()
     run_config.environment = environment
